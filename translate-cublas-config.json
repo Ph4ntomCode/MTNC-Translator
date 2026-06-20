@@ -1,0 +1,23 @@
+{
+  "projectId": "cublas64-10",
+  "projectName": "cuBLAS64 CUDA 10",
+  "modLoader": "none",
+  "game": "CUDA",
+  "buildOptions": {
+    "outputDir": "./mods/output/cublas64-10",
+    "optimize": true,
+    "debug": false,
+    "frameworkDir": "../../framework/stubs"
+  },
+  "translationOptions": {
+    "cache": false,
+    "incremental": false,
+    "validate": true,
+    "autoDeps": true,
+    "verbose": true
+  },
+  "logging": {
+    "level": "verbose",
+    "file": "cublas-translation.log"
+  }
+}

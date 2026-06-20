@@ -1,0 +1,85 @@
+{
+  "$schema": "./mtnc-config-schema.json",
+  "version": "0.1.0",
+  
+  "translation": {
+    "preset": "default",
+    "cppStandard": 20,
+    "outputFormat": "cpp",
+    "outputDirectory": "generated_cpp",
+    
+    "options": {
+      "preserveMethodNames": true,
+      "preserveTypeNames": true,
+      "preserveNamespaces": true,
+      "generateHeaders": true,
+      "generateImplementation": true,
+      "includeIL2CPPHeaders": true,
+      "includeUnityHeaders": true,
+      "generateForwardDeclarations": true,
+      "preserveComments": true
+    },
+    
+    "optimization": {
+      "level": "O2",
+      "enableLTO": false,
+      "enablePCH": true,
+      "stringPooling": true,
+      "fastCompilation": false
+    }
+  },
+  
+  "build": {
+    "autoBuild": false,
+    "compiler": "clang++",
+    "platform": "auto",
+    "architecture": "auto",
+    
+    "flags": {
+      "warnings": ["-Wall", "-Wextra"],
+      "includes": [],
+      "libraries": [],
+      "defines": []
+    },
+    
+    "output": {
+      "directory": "build",
+      "name": "auto",
+      "type": "dynamic"
+    }
+  },
+  
+  "analysis": {
+    "enableCompatibilityCheck": true,
+    "enableStaticAnalysis": true,
+    "enableBugDetection": true,
+    "minCompatibilityScore": 70
+  },
+  
+  "game": {
+    "autoDetect": true,
+    "metadataPath": "./Dummy_Dump",
+    "targetGame": null
+  },
+  
+  "watch": {
+    "enabled": false,
+    "debounce": 500,
+    "ignored": ["node_modules", ".git", "build", "dist"]
+  },
+  
+  "logging": {
+    "level": "info",
+    "format": "pretty",
+    "output": "console",
+    "verbose": false
+  },
+  
+  "advanced": {
+    "parallelism": "auto",
+    "memoryLimit": "auto",
+    "tempDirectory": ".mtnc-temp",
+    "cacheEnabled": true,
+    "cacheDirectory": ".mtnc-cache"
+  }
+}

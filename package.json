@@ -1,0 +1,136 @@
+{
+  "name": "mtnc-translator",
+  "version": "0.0.1-pre-alpha",
+  "type": "module",
+  "description": "MTNC Translator: Universal C# to C++ IL2CPP Translator - Any Mod, Any Assembly (Pre-Alpha)",
+  "keywords": [
+    "il2cpp",
+    "game-modding",
+    "unity",
+    "native-compilation",
+    "translator",
+    "universal",
+    "cross-platform",
+    "dotnet",
+    "assembly",
+    "bepinex",
+    "melonloader",
+    "any-mod"
+  ],
+  "license": "MIT",
+  "author": "MTNC Development Team <dev@mtnc.dev>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./cli": {
+      "import": "./dist/cli/index.js",
+      "types": "./dist/cli/index.d.ts"
+    }
+  },
+  "bin": {
+    "mtnc": "bin/mtnc"
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": [
+      "framework/**/*",
+      "config/**/*",
+      "src/tools/ilparser/**/*",
+      "dependencies/**/*"
+    ],
+    "targets": [
+      "node18-macos-x64",
+      "node18-macos-arm64",
+      "node18-linux-x64",
+      "node18-linux-arm64",
+      "node18-linuxstatic-x64",
+      "node18-linuxstatic-arm64",
+      "node18-win-x64",
+      "node18-win-arm64"
+    ],
+    "outputPath": "bin"
+  },
+  "scripts": {
+    "clean": "rm -rf dist build coverage .tsbuildinfo",
+    "build": "tsc && npx tsc -p tsconfig.json --outDir dist/bin --module ESNext --moduleResolution bundler",
+    "build:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "lint:strict": "eslint -c eslint.strict.config.mjs src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run typecheck && npm run lint && npm run test",
+    "start": "node dist/cli/index.js",
+    "dev": "npm run build:watch",
+    "translate": "node dist/cli/index.js translate",
+    "pkg": "pkg . --output bin/mtnc",
+    "pkg:macos": "pkg . --targets node20-macos-x64,node20-macos-arm64 --output bin/mtnc-macos",
+    "pkg:linux": "pkg . --targets node20-linux-x64,node20-linux-arm64 --output bin/mtnc-linux",
+    "pkg:win": "pkg . --targets node20-win-x64,node20-win-arm64 --output bin/mtnc-win.exe",
+    "pkg:all": "npm run pkg:macos && npm run pkg:linux && npm run pkg:win",
+    "build:all": "bash build-all.sh",
+    "install:global": "cd bin && sudo ./install.sh",
+    "docs:generate": "node dist/translator/docs-generator.js",
+    "prepack": "npm run build && npm run validate"
+  },
+  "dependencies": {
+    "boxen": "8.0.1",
+    "chalk": "5.6.2",
+    "chokidar": "5.0.0",
+    "cli-progress": "3.12.0",
+    "commander": "14.0.3",
+    "fs-extra": "11.3.3",
+    "inquirer": "13.2.2",
+    "glob": "11.0.0",
+    "minimatch": "10.0.0"
+  },
+  "devDependencies": {
+    "@types/boxen": "2.1.0",
+    "@types/cli-progress": "3.11.6",
+    "@types/fs-extra": "11.0.4",
+    "@types/glob": "8.1.0",
+    "@types/inquirer": "9.0.9",
+    "@types/jest": "30.0.0",
+    "@types/minimatch": "5.1.2",
+    "@types/node": "25.2.3",
+    "@typescript-eslint/eslint-plugin": "8.56.1",
+    "@typescript-eslint/parser": "8.56.1",
+    "eslint": "9.39.2",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-jest": "29.15.0",
+    "eslint-plugin-prettier": "5.5.5",
+    "jest": "30.2.0",
+    "pkg": "5.8.1",
+    "prettier": "3.8.1",
+    "ts-jest": "29.4.6",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "files": [
+    "dist/**/*",
+    "framework/**/*",
+    "config/**/*",
+    "dependencies/**/*",
+    "bin/**/*",
+    "prism_mod_api.hpp"
+  ]
+}

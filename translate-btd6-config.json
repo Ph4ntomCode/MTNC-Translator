@@ -1,0 +1,23 @@
+{
+  "projectId": "btd6-mod-helper",
+  "projectName": "BTD6 Mod Helper",
+  "modLoader": "melonloader",
+  "game": "BTD6",
+  "buildOptions": {
+    "outputDir": "./mods/output/btd6-mod-helper",
+    "optimize": true,
+    "debug": false,
+    "frameworkDir": "../../framework/stubs"
+  },
+  "translationOptions": {
+    "cache": false,
+    "incremental": false,
+    "validate": true,
+    "autoDeps": true,
+    "verbose": true
+  },
+  "logging": {
+    "level": "verbose",
+    "file": "btd6-translation.log"
+  }
+}
